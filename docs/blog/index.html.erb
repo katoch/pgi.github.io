@@ -1,0 +1,44 @@
+---
+title: Blog - EuRuKo 2013 - Athens
+pageable: true
+per_page: 5
+---
+
+<section class="container" id="blog-articles">
+  <% page_articles.each_with_index do |article, i| %>
+      <article class="blog-post" itemscope itemscope="http://schema.org/Article">
+        <header>
+          <h2 itemprop="headline"><%= link_to article.title, article %></h2>
+        </header>
+        <section class="body" itemprop="description">
+            <%= partial 'blog/authors', locals: { authors: article.data.authors.split(",").take(1), 
+                                              article_date: article.date } %>
+            <%= article.summary %>
+            <div class="comment">
+              <%= link_to 'comments', article, anchor: 'disqus_thread', class: 'comment-count' %>
+            </div>
+        </section>
+      </article>
+  <% end %>
+
+  <% if paginate %>
+    <%= partial 'blog/pagination', locals: { page_number: page_number,
+                                             num_pages: num_pages,
+                                             prev_page: prev_page,
+                                             next_page: next_page } %>
+  <% end %>
+   </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+var disqus_shortname = 'euruko2013';
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>

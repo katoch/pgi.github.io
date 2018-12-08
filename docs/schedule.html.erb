@@ -1,0 +1,82 @@
+---
+title: Schedule - EuRuKo 2013 - Athens
+description: EuRuKo 2013 - Schedule
+---
+<div class="section" id="schedule">
+
+  <h3 class="centered">Schedule</h3>
+
+  <div class="centered">
+    <div id="schedule-clock"></div>
+
+    <% data.schedule.each do |day, events| %>
+      <div class="table-wrapper">
+        <table class="table table-hover">
+          <caption id="schedule-caption-<%= day %>"><%= day %> June</caption>
+
+          <tbody>
+            <% events.each do |event| %>
+              <% speaker = find_speaker(event.speaker_id) %>
+              <tr itemscope itemtype="<%= "http://schema.org/#{'Education' if speaker}Event"%>" class="<%= 'no-talk' unless speaker %> <%= 'important' if event.important || (speaker && speaker.keynote) %> <%= 'break' if event.break %>">
+                <td>
+                  <span>
+                    <time itemprop="startDate" datetime="<%= event.starts_at.iso8601 %>"><%= event.starts_at.strftime('%H:%M') %></time>
+                    <% if event.ends_at %>
+                    -
+                    <time itemprop="endDate" datetime="<%= event.ends_at.iso8601 %>"><%= event.ends_at.strftime('%H:%M') %></time>
+                    <% end %>
+                  </span>
+                </td>
+                
+                <% if speaker %>
+                  <td itemscope itemprop="performer" itemtype="http://schema.org/Person">
+                    <span itemprop="name"><%= link_to h(speaker.name), "/speakers##{speaker.id}" %></span>
+                  </td>
+
+                  <td>
+                    <span itemprop="name"><%= h(speaker.talk.title) %></span>
+                    <% if speaker.talk.description %>
+                      <a class="schedule-talk-more">...</a>
+                        <p itemprop="description" class="schedule-talk-description hide"><%= h(speaker.talk.description) %></p>
+                    <% end %>
+                  </td>
+
+                  <td class="talk-info">
+                    <% if speaker.keynote %>
+                      <span class="label label-info">keynote</span>
+                    <% end %>
+
+                    <% if speaker.talk && speaker.talk.video %>
+                      <span class="label label-important">
+                        <% link_to speaker.talk.video, target: 'blank' do %>
+                          video <i class="icon-facetime-video"></i>
+                        <% end %>
+                      </span>
+                    <% end %>
+
+                    <% if speaker.talk && (speaker.talk.online || speaker.talk.pdf) %>
+                      <span class="label">
+                        slides:
+                        <% if speaker.talk.online %>
+                          <%= link_to 'online', speaker.talk.online, target: 'blank' %>
+                          <i class="icon-external-link"></i> -
+                        <% end %>
+                        <% if speaker.talk.pdf %>
+                          <%= link_to 'pdf', "/speakers/presentations/#{speaker.talk.pdf}" %>
+                          <i class="icon-file"></i>
+                        <% end %>
+                      </span>
+                    <% end %>
+                  </td>
+
+                <% else %>
+                  <td colspan="3" itemprop="name"><%= h(event.title) %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

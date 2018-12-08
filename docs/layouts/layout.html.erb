@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= data.page.title || "EuRuKo 2013 - Athens" %></title>
+
+    <meta name="description" content="<%= data.page.description %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Facebook OpenGraph metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= data.page.title || "EuRuKo 2013 - Athens" %>">
+    <meta property="og:description" content="<%= data.page.description %>">
+    <meta property="og:url" content="http://<%= data.settings.domain %>/<%= request.path %>">
+    <meta property="og:image" content="http://<%= data.settings.domain %>/<%= asset_path(:images, 'euruko2013_logo_408x300.png') %>">
+
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="FP2eNg31rKoW-c6LF1GM7Px6STWSI3UNEUU4o5vzLKY" />
+
+    <!-- Apple iTunes App ID -->
+    <meta name="apple-itunes-app" content="app-id=648956739">
+
+    <!-- Favico -->
+    <link rel="shortcut icon" href="http://<%= data.settings.domain %>/favicon.ico?v=2" />
+
+    <!-- Apple Touch icons (iOS) -->
+    <!--<link rel="apple-touch-icon" href="/apple-touch-icon.png" />-->
+
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic' rel='stylesheet' type='text/css'>
+
+    <!-- Blog feed -->
+    <link rel="alternate" type="application/atom+xml" title="EuRuKo 2013 Blog feed" href="/blog/feed.xml" />
+
+    <!-- Stylesheets -->
+    <%= stylesheet_link_tag "main" %>
+
+    <!-- JavaScript -->
+    <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
+    <%= javascript_include_tag 'main', 'parallax', 'vendor/easing', 'vendor/countdown', 'vendor/bootstrap' %>
+
+    <!-- Google Analytics -->
+    <script>
+      var _gaq=[['_setAccount','UA-36907690-1'],['_setDomainName', 'euruko2013.org'],['_setAllowLinker', true],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+
+    <!-- Twitter follow widget -->
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
+  </head>
+
+  <body class="<%= @body_class %>">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+    <div id="navbar-main" class="navbar navbar-fixed-top navbar-main">
+      <div class="navbar-inner">
+        <div class="container">
+          <% link_to '/', class: 'brand' do %>
+            <div class="navbar-logo"></div>
+          <% end %>
+          <ul class="nav pull-right">
+            <li><%= link_to_section 'About', '#about' %></li>
+            <li><%= link_to_section 'Videos', '#videos' %></li>
+            <li><%= link_to_section 'Photos', '#photos' %></li>
+            <li><%= link_to 'Speakers', '/speakers' %></li>
+            <li><%= link_to 'Schedule', '/schedule' %></li>
+            <li><%= link_to 'Party', '/party' %></li>
+            <li><%= link_to 'Venue', '/venue' %></li>
+            <li><%= link_to_section 'Sponsors', '#sponsors' %></li>
+            <li><%= link_to_section 'Contact', '#contact' %></li>
+            <li class="blog-item">
+              <%= link_to 'Blog', '/blog' %>
+              <% link_to '/blog/feed.xml' do %>
+                <i class="icon-rss"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <%= yield %>
+
+    <!-- Footer -->
+    <footer>
+      <%= partial 'layouts/footer' %>
+    </footer>
+
+  </body>
+</html>
