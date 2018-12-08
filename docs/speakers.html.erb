@@ -1,0 +1,15 @@
+---
+title: Speakers - EuRuKo 2013 - Athens
+description: EuRuKo 2013 - Speakers
+---
+<div id="speakers" class="section">
+  <div class="intro">
+    <h3>Amazing Speakers</h3>
+    EuRuKo 2013 has an amazing speaker line up chosen by the community throught the open for all <%= link_to 'CfP', 'http://cfp.euruko2013.org/proposals' %>.
+  </div>
+  <ul class="centered">
+    <% data.speakers.each_with_index do |speaker, i| %>
+      <%= partial 'speakers/speaker', locals: { speaker: speaker, position: (i.even? ? "left" : "right") } %>
+    <% end %>
+  </ul>
+</div>

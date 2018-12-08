@@ -1,0 +1,42 @@
+.navbar-fixed-top {
+  margin-bottom: 0;
+  
+  .navbar-inner {
+    padding: 10px;
+    background-image: none;
+    background-color: rgb(255,255,255);
+    box-shadow: none;
+  }
+}
+
+.navbar-logo {
+  height: 20px;
+  width: 120px;
+  text-indent: -9999px;
+  background-image: image-url("sprite.png");
+  background-position: -305px -70px;
+}
+
+.navbar {
+  .nav > li.stream > a {
+    color: #a32522;
+  }
+
+  .nav > li > a {
+    text-shadow: none;
+    font: 400 14px $ubuntu;
+    color: #616161;
+    border-bottom: none;
+    text-transform: uppercase;
+    padding: 10px 12px 10px;
+  }
+
+  .nav > li.blog-item > a {
+    display: inline-block;
+  
+    &:last-child {
+      color: $linkColor;
+      padding-left: 0;
+    }
+  }
+}

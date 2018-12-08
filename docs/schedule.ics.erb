@@ -1,0 +1,26 @@
+<%
+  domain = data.settings.domain
+  cal = Icalendar::Calendar.new
+
+  data.schedule.values.flatten.each do |event|
+    speaker = find_speaker(event.speaker_id)
+
+    if speaker
+      title = speaker.talk.title
+      description = speaker.talk.description || ''
+    else
+      title = event.title
+      description = event.description
+    end
+
+    cal.event do |e|
+      # Override UID since its based on the build maching host name
+      e.uid "#{DateTime.now}_#{rand(999999999)}@#{domain}"
+
+      e.summary = title
+      e.description = description
+      e.start = event.starts_at.to_datetime
+      e.end = event.ends_at.to_datetime if event.ends_at
+   end
+end
+%><%= cal.to_ical %>

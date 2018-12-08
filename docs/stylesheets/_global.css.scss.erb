@@ -1,0 +1,58 @@
+/* Common elements */
+body, 
+button, input, select, textarea { 
+  font:normal 1em/1.4 $verdana;
+  color: $dark_grey;
+}
+
+body {
+    padding-top: 60px;
+    background-color: #fafafa;
+}
+
+a {
+  text-decoration: underline;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.centered {
+  position:relative;
+  overflow:hidden;
+  max-width:1180px;
+  margin:0 auto;
+  width: 98%;
+}
+
+.external-link {
+  display: block;
+  width: 300px;
+  margin: $vr auto 0;
+  padding: 10px 10px;
+  border: 1px solid #cecece;
+  background: #d7d7d7;
+  font: 300 18px $ubuntu;
+  color: $light_grey;
+  text-decoration: none;
+}
+
+.external-link:hover,
+.external-link:active,
+.external-link.active
+{
+  border: 1px solid #f2f2f2;
+  background: #99352d;
+  color: #f2f2f2;
+}
+
+.external-link.disabled {
+  border: 1px solid #dadada;
+  background: #e4e4e4;
+  color: $lightest_grey;
+
+  &:before {
+    opacity: .6;
+  }
+}

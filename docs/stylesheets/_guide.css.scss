@@ -1,0 +1,43 @@
+.guide {
+  .thumbnail {
+    text-decoration: none;
+
+    .title {
+      text-align: center;
+    }
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  .list-thumbnail {
+    display: inline-block;
+    list-style: none;
+    width: 230px;
+  }
+
+  .attribution {
+    display: inline-block;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: right;
+    width: 100%;
+  }
+
+  .table {
+    .time {
+      white-space: nowrap;
+    }
+  }
+
+  .dl-light {
+    dt {
+      font-weight: normal;
+    }
+  }
+
+  li {
+    margin-bottom: 7px;
+  }
+}
